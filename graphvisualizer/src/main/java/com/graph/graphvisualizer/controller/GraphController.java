@@ -11,17 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/graph")
-@CrossOrigin(
-        origins = "*",
-        allowedHeaders = "*",
-        methods = {
-                RequestMethod.GET,
-                RequestMethod.POST,
-                RequestMethod.PUT,
-                RequestMethod.DELETE,
-                RequestMethod.OPTIONS
-        }
-)
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {
+        RequestMethod.GET,
+        RequestMethod.POST,
+        RequestMethod.PUT,
+        RequestMethod.DELETE,
+        RequestMethod.OPTIONS
+})
 public class GraphController {
 
     @Autowired
@@ -31,6 +27,11 @@ public class GraphController {
     @RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
     public ResponseEntity<?> handleOptions() {
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "Backend Running";
     }
 
     // ✅ CREATE GRAPH
@@ -62,8 +63,7 @@ public class GraphController {
         return GraphUtil.bfsWithSteps(
                 graph.getNodes(),
                 adj,
-                req.getStartNode()
-        );
+                req.getStartNode());
     }
 
     // ✅ DFS
@@ -77,7 +77,6 @@ public class GraphController {
         return GraphUtil.dfsWithSteps(
                 graph.getNodes(),
                 adj,
-                req.getStartNode()
-        );
+                req.getStartNode());
     }
 }

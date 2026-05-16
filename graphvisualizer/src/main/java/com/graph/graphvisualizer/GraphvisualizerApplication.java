@@ -7,10 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GraphvisualizerApplication {
 
     public static void main(String[] args) {
-
-        SpringApplication.run(
-            GraphvisualizerApplication.class,
-            args
-        );
+        SpringApplication.run(GraphvisualizerApplication.class, args);
     }
 }
