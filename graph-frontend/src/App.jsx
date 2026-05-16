@@ -130,7 +130,7 @@ function App() {
   const handleCreate = async () => {
 
     const res = await fetch(
-      "https://graphvisualizer-backend.onrender.com/graph/create",
+      "https://graphvisualizer-frontend.onrender.com/graph/create",
       {
         method: "POST",
 

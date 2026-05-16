@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://graphvisualizer-backend.onrender.com",
+  baseURL: "https://graphvisualizer-frontend.onrender.com",
 });
 
 export const createGraph = (data) => API.post("/graph/create", data);
