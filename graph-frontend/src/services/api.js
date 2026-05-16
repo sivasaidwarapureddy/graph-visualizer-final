@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://dummyjson.com",
 });
 
 export const createGraph = (data) => API.post("/graph/create", data);
