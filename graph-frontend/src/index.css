@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply px-5 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 
+  text-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl 
+  transition-all duration-300;
+}
