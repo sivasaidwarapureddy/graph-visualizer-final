@@ -1,27 +1,18 @@
-package com.graph.graphvisualizer.config;
+package main.java.com.graph.graphvisualizer.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig {
+public class CorsConfig implements WebMvcConfigurer {
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
 
-        return new WebMvcConfigurer() {
-
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-
-                registry.addMapping("/**")
-                        .allowedOrigins(
-                                "https://graph-frontend-yv3f.onrender.com"
-                        )
-                        .allowedMethods("*")
-                        .allowedHeaders("*");
-            }
-        };
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("*")
+                .allowedHeaders("*");
     }
 }
