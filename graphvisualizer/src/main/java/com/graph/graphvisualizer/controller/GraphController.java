@@ -1,23 +1,37 @@
 package com.graph.graphvisualizer.controller;
 
-import com.graph.graphvisualizer.dto.AlgoRequest;
-import com.graph.graphvisualizer.dto.GraphCreateRequest;
-import com.graph.graphvisualizer.dto.GraphResponse;
-import com.graph.graphvisualizer.dto.TraversalResponse;
+import com.graph.graphvisualizer.dto.*;
 import com.graph.graphvisualizer.model.Graph;
 import com.graph.graphvisualizer.service.GraphService;
 import com.graph.graphvisualizer.util.GraphUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/graph")
-@CrossOrigin("*")
+@CrossOrigin(
+        origins = "*",
+        allowedHeaders = "*",
+        methods = {
+                RequestMethod.GET,
+                RequestMethod.POST,
+                RequestMethod.PUT,
+                RequestMethod.DELETE,
+                RequestMethod.OPTIONS
+        }
+)
 public class GraphController {
 
     @Autowired
     private GraphService service;
+
+    // ✅ PREFLIGHT FIX
+    @RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
+    public ResponseEntity<?> handleOptions() {
+        return ResponseEntity.ok().build();
+    }
 
     // ✅ CREATE GRAPH
     @PostMapping("/create")
@@ -28,7 +42,7 @@ public class GraphController {
         return service.toDTO(graph);
     }
 
-    // ✅ GET GRAPH BY ID
+    // ✅ GET GRAPH
     @GetMapping("/{id}")
     public GraphResponse getGraphById(@PathVariable Long id) {
 
