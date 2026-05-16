@@ -92,7 +92,7 @@ function App() {
 
   // 🔥 LOAD GRAPH
   const handleCreate = async () => {
-    const res = await fetch(`http://localhost:8080/graph/${GRAPH_ID}`);
+    const res = await fetch(`https://graphvisualizer-backend.onrender.com/graph/${GRAPH_ID}`);
     const data = await res.json();
 
     const flowData = convertToFlow(data);
